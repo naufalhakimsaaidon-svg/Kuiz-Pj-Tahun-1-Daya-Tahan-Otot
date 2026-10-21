@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kuiz BoBoiBoy: Jom Jadi Kuat!</title>
+<style>
+:root{--blue:#0753b9;--cyan:#16d7ff;--navy:#042d79;--pale:#d8f5ff;--yellow:#ffe65a}
+*{box-sizing:border-box}body{margin:0;font-family:"Trebuchet MS",Arial,sans-serif;color:#07316f;background:#043c99}
+.page{max-width:1150px;margin:auto;padding:12px;background:radial-gradient(ellipse at top,#078be6 0,#0648b4 44%,#031f68 100%);min-height:100vh}
+.hero{position:relative;text-align:center;color:white;padding:20px 12px 24px;overflow:hidden;border-radius:18px;background:linear-gradient(135deg,#05368b,#087ce1,#042a79);border:2px solid #12d8ff}
+.hero:before{content:"✦  ★   ✧       ★      ✦       ★";position:absolute;inset:5px;color:#ffdf3d;font-size:28px;letter-spacing:18px;opacity:.8;pointer-events:none}
+.logo{font-weight:1000;font-style:italic;color:#ffdf36;text-shadow:3px 4px #bd1a14,-1px -1px white;font-size:clamp(24px,5vw,48px);position:relative}
+h1{display:inline-block;position:relative;margin:10px 0;padding:8px 22px;border:3px solid #12d9ff;border-radius:28px;background:#042c78;font-size:clamp(24px,4vw,42px);color:#ffe65a}
+.hero p{margin:5px auto;font-weight:bold;font-size:clamp(14px,2vw,20px);position:relative}.speech{color:#052d70;background:#ffed75;border-radius:18px;padding:10px;display:inline-block;margin-top:12px;font-weight:bold;transform:rotate(-2deg)}
+.student{background:#e7faff;border:3px solid #22c8ff;border-radius:14px;padding:12px;display:flex;gap:12px;flex-wrap:wrap;margin:12px 0;color:#07316f}
+.student label{font-weight:bold;display:flex;gap:8px;align-items:center;flex:1;min-width:190px}.student input,.student select{font:inherit;padding:10px;border:2px solid #79dafa;border-radius:10px;min-width:0;flex:1}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.q{background:linear-gradient(#fff,#f1fcff);border:3px solid #13bfff;border-radius:14px;padding:10px;box-shadow:0 3px 0 #0648a0;display:flex;flex-direction:column;min-width:0}
+.qhead{display:flex;align-items:flex-start;gap:8px}.num{background:#0753b9;color:white;border:3px solid #fff;border-radius:50%;width:42px;height:42px;min-width:42px;display:grid;place-items:center;font-size:24px;font-weight:1000;box-shadow:0 0 0 2px #0d83e5}.question{font-size:clamp(13px,1.35vw,17px);font-weight:900;line-height:1.18;margin:3px 0 8px}
+.illustration{height:105px;display:grid;place-items:center;font-size:65px;background:radial-gradient(ellipse,#e1faff,#fff 70%);border-radius:10px;margin-bottom:7px}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:auto}
+.choice{border:2px solid transparent;border-radius:11px;background:#c9f0ff;color:#07316f;padding:8px 7px;text-align:left;display:flex;gap:7px;align-items:center;font:inherit;font-size:clamp(12px,1.1vw,15px);cursor:pointer;min-height:40px}
+.choice b{display:grid;place-items:center;min-width:25px;height:25px;border-radius:50%;background:#fff;color:#0874c9;border:2px solid #80d9f8}
+.choice:hover{border-color:#008de0}.choice.selected{background:#ffe77b;border-color:#f5ad00}.choice.correct{background:#b8f5c6;border-color:#19a84c}.choice.wrong{background:#ffd4d4;border-color:#e34c4c}
+.actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:18px 0}.btn{font:inherit;font-weight:900;border:0;border-radius:30px;padding:13px 22px;cursor:pointer;color:#07316f;background:#ffe65a;box-shadow:0 4px 0 #b88600}.btn.secondary{background:#d6f6ff;box-shadow:0 4px 0 #0785c8}
+.result{display:none;background:#fff;border:4px solid #ffe65a;border-radius:18px;padding:20px;margin:14px 0;text-align:center}.result h2{color:#0753b9}.score{font-size:clamp(30px,7vw,56px);font-weight:1000;color:#0877d5}.small{font-size:14px}.board{background:#e7faff;border-radius:14px;padding:12px;margin-top:12px;text-align:left}.board table{width:100%;border-collapse:collapse}.board td,.board th{padding:7px;border-bottom:1px solid #9adcf2;text-align:left}.footer{text-align:center;color:white;font-weight:1000;font-size:clamp(15px,2vw,22px);padding:20px 5px}.hidden{display:none}
+@media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.page{padding:7px}.q{padding:7px}.illustration{height:80px;font-size:50px}.num{width:34px;height:34px;min-width:34px;font-size:20px}}
+@media(max-width:500px){.grid{grid-template-columns:1fr}.q{padding:11px}.illustration{height:92px}.question{font-size:16px}.choice{font-size:14px}}
+@media print{body{background:white}.page{background:white}.hero,.footer{print-color-adjust:exact;-webkit-print-color-adjust:exact}.student,.grid,.actions,.board{display:none!important}.result{display:block!important}.result button{display:none}}
+</style></head><body><main class="page">
+<header class="hero"><div class="logo">BOBOIBOY</div><h1>Kuiz: Jom Jadi Kuat!</h1><p>Jawab semua soalan dengan memilih jawapan yang betul.</p><p>Lihat gambar untuk membantu kamu.</p><div class="speech">Jaga kesihatan badan kita kuat!</div></header>
+<section class="student"><label>Nama murid <input id="studentName" placeholder="Contoh: Naufal" maxlength="60"></label><label>Kelas <select id="studentClass"><option value="">Pilih kelas</option><option>1 Al-Batani</option><option>1 Al-Farabi</option><option>1 Al-Jazari</option></select></label></section>
+<section id="quiz" class="grid"></section>
+<div class="actions"><button class="btn" onclick="submitQuiz()">Semak Jawapan & Lihat Markah ⭐</button><button class="btn secondary" onclick="resetQuiz()">Cuba Semula ↻</button></div>
+<section id="result" class="result"><h2>🌟 Keputusan Kuiz: Jom Jadi Kuat! 🌟</h2><div id="resultName"></div><div class="score" id="score"></div><p id="message"></p><p class="small">Ambil tangkap layar keputusan ini untuk dihantar kepada cikgu.</p><button class="btn" onclick="window.print()">Cetak / Simpan PDF</button></section>
+<section class="board"><h2>🏆 Carta Kedudukan Kelas Ini</h2><p class="small">Rekod disimpan pada peranti/pelayar ini sahaja. Untuk kumpulkan markah semua murid, cikgu perlu gabungkan rekod daripada setiap peranti.</p><div id="leaderboard"></div><div class="actions"><button class="btn secondary" onclick="exportCSV()">Muat Turun Rekod CSV</button><button class="btn secondary" onclick="clearBoard()">Padam Carta Kedudukan</button></div></section>
+<footer class="footer">⭐ Kamu memang hebat! Teruskan usaha untuk jadi lebih kuat! ⭐</footer></main>
+<script>
+const questions=[
+["Aktiviti manakah yang ditunjukkan oleh budak yang menolak badan dengan tangan?","🤸",["Tekan tubi","Tidur","Makan","Membaca"],0],
+["Aktiviti ringkuk tubi separa membantu menguatkan otot apa?","🧘",["Otot abdomen","Otot telinga","Otot jari sahaja","Otot mata"],0],
+["Berapa lama kita perlu mengekalkan posisi tekan tubi?","⏱️",["1–2 saat","10–15 saat","1 minit","2 minit"],1],
+["Aktiviti cangkung separa menggunakan otot bahagian mana?","🏃‍♀️",["Kaki dan pinggul","Telinga","Jari sahaja","Mata"],0],
+["Apakah yang boleh dilakukan oleh otot yang kuat?","📦",["Mengangkat beban","Bernafas di dalam air tanpa alat","Terbang seperti burung","Menjadi halimunan"],0],
+["Kita perlu mengikut kemampuan sendiri semasa melakukan aktiviti otot. Ini adalah…","💪",["Betul","Salah","Cepat","Lambat"],0],
+["Otot bahu berada di bahagian mana?","🙋",["Bahu","Tapak kaki","Perut","Dahi"],0],
+["Aktiviti bergayut menggunakan otot apa?","🛝",["Otot lengan dan bahu","Otot lidah sahaja","Otot mata sahaja","Otot jari kaki sahaja"],0],
+["Apakah yang kita gunakan untuk melakukan tekan tubi?","🤸",["Tangan dan lengan","Telinga","Rambut","Hidung sahaja"],0],
+["Ringkuk tubi separa ialah aktiviti untuk otot abdomen. Betul atau salah?","🧘",["Betul","Salah","Mungkin","Tidak pasti"],0],
+["Sebelum melakukan aktiviti otot, kita patut berhati-hati supaya tidak…","🪖",["Terjatuh","Tersenyum","Belajar","Berkawan"],0],
+["Aktiviti duduk dan berdiri tanpa sokongan melibatkan otot bahagian mana?","🧍",["Pinggul dan kaki","Rambut dan telinga","Mata dan hidung","Jari sahaja"],0],
+["Apakah nama aktiviti apabila kita bergerak dari baring kepada duduk?","➡️",["Baring kepada duduk","Berlari pantas","Melompat tinggi","Bergayut pada palang"],0],
+["Otot kaki membantu kita melakukan apa?","🦵",["Berdiri","Melihat warna","Menghidu bau","Mendengar lagu"],0],
+["Semasa bersenam, kita perlu melakukan aktiviti mengikut apa?","👍",["Kemampuan sendiri","Kelajuan kawan sahaja","Arahan untuk terus berlari tanpa henti","Kemampuan watak kartun"],0]
+];
+const letters=["A","B","C","D"];let answers={};
+function render(){document.getElementById('quiz').innerHTML=questions.map((q,i)=>`<article class="q" id="q${i}"><div class="qhead"><span class="num">${i+1}</span><div class="question">${q[0]}</div></div><div class="illustration" role="img" aria-label="Ilustrasi aktiviti">${q[1]}</div><div class="choices">${q[2].map((a,j)=>`<button class="choice" onclick="pick(${i},${j})" id="q${i}a${j}"><b>${letters[j]}</b><span>${a}</span></button>`).join('')}</div></article>`).join('')}
+function pick(i,j){answers[i]=j;questions[i][2].forEach((_,k)=>document.getElementById(`q${i}a${k}`).classList.toggle('selected',k===j))}
+function submitQuiz(){const name=document.getElementById('studentName').value.trim();const cls=document.getElementById('studentClass').value;if(!name||!cls){alert('Isi nama murid dan pilih kelas dahulu ya!');return}if(Object.keys(answers).length<questions.length&&!confirm(`Kamu sudah jawab ${Object.keys(answers).length} daripada ${questions.length} soalan. Hantar juga?`))return;
+let score=0;questions.forEach((q,i)=>{q[2].forEach((_,j)=>{let el=document.getElementById(`q${i}a${j}`);el.classList.remove('correct','wrong');if(j===q[3])el.classList.add('correct');else if(answers[i]===j)el.classList.add('wrong')});if(answers[i]===q[3])score++});
+document.getElementById('resultName').textContent=`Nama: ${name} • Kelas: ${cls}`;document.getElementById('score').textContent=`${score} / ${questions.length}`;document.getElementById('message').textContent=score>=13?'Hebat! Kamu memang kuat! 🌟':score>=9?'Bagus! Teruskan berlatih ya! 💪':'Jangan putus asa! Cuba lagi dan belajar sedikit demi sedikit! ⭐';document.getElementById('result').style.display='block';document.getElementById('result').scrollIntoView({behavior:'smooth',block:'center'});
+let rows=JSON.parse(localStorage.getItem('boboiboyLeaderboard')||'[]');rows.push({name,cls,score,total:questions.length,date:new Date().toLocaleDateString('ms-MY')});rows.sort((a,b)=>b.score-a.score);localStorage.setItem('boboiboyLeaderboard',JSON.stringify(rows));showBoard()}
+function resetQuiz(){answers={};render();document.getElementById('result').style.display='none';window.scrollTo({top:0,behavior:'smooth'})}
+function showBoard(){let rows=JSON.parse(localStorage.getItem('boboiboyLeaderboard')||'[]');document.getElementById('leaderboard').innerHTML=rows.length?`<table><thead><tr><th>#</th><th>Nama</th><th>Kelas</th><th>Markah</th><th>Tarikh</th></tr></thead><tbody>${rows.slice(0,20).map((r,i)=>`<tr><td>${i+1}</td><td>${esc(r.name)}</td><td>${esc(r.cls)}</td><td>${r.score}/${r.total}</td><td>${r.date}</td></tr>`).join('')}</tbody></table>`:'Belum ada rekod. Jadilah murid pertama!'}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function exportCSV(){let rows=JSON.parse(localStorage.getItem('boboiboyLeaderboard')||'[]');if(!rows.length){alert('Belum ada rekod untuk dimuat turun.');return}let csv='Nama,Kelas,Markah,Jumlah,Tarikh\\n'+rows.map(r=>[r.name,r.cls,r.score,r.total,r.date].map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(',')).join('\\n');let a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\\ufeff'+csv],{type:'text/csv;charset=utf-8;'}));a.download='rekod-kuiz-jom-jadi-kuat.csv';a.click();URL.revokeObjectURL(a.href)}
+function clearBoard(){if(confirm('Padam semua rekod carta kedudukan pada peranti ini?')){localStorage.removeItem('boboiboyLeaderboard');showBoard()}}
+render();showBoard();
+</script></body></html>
